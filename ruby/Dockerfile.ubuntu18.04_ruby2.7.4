@@ -33,7 +33,7 @@ RUN curl -L http://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.4.tar.gz > ruby-2.7
     && make install
 
 # Install base gems
-RUN gem install bundler -v 2.1.4 \
+RUN gem install bundler -v 2.2.26 \
     && gem install "rubygems-update" --no-document \
     && gem install rb-inotify -v 0.10.1 --no-document\
     && gem install rice -v 2.2.0 --no-document \
