@@ -1,0 +1,9 @@
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TERM linux
+
+RUN apt-get update && \
+  apt-get install -y cppcheck
+
+WORKDIR /sdk
