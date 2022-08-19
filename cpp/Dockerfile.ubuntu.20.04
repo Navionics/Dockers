@@ -3,16 +3,16 @@ FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TERM linux
 
-ARG CMAKE_VERSION=3.21.0
+ARG CMAKE_VERSION=3.24.1
 
 RUN apt-get update && \
   apt-get install -y \
 	ninja-build \
 	build-essential \
-	gcovr \
 	curl \
 	git \
 	vim \
+	python3-pip \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN curl -o /tmp/cmake-install.sh -L https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
@@ -20,6 +20,8 @@ RUN curl -o /tmp/cmake-install.sh -L https://github.com/Kitware/CMake/releases/d
       && mkdir /usr/bin/cmake \
       && /tmp/cmake-install.sh --skip-license --prefix=/usr/bin/cmake \
       && rm /tmp/cmake-install.sh
+
+RUN pip3 install gcovr==5.2
 
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
 
