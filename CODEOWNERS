@@ -3,7 +3,7 @@
 # These owners will be the default owners for everything in
 # the repo. Unless a later match takes precedence, They will
 # be requested for review when someone opens a pull request.
-* @Odyno @gianninisimone @rsimone @AlessandroDeMartini @agentili
+* @rsimone @AlessandroDeMartini @agentili
 
 # Order is important; the last matching pattern takes the most
 # precedence.
@@ -14,6 +14,10 @@
 # a Dev file, only Developers and not the global owner(s) will
 # be requested for a review.
 # add a Developers folder if necessary 
+
+/cpp/ @raffaellobrondi @agioia-nav @fporcarelli
+
+/ruby/ @rdelrioo @gianninisimone
 
 # ----------------------- DevOps --------------------------
 
