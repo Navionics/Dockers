@@ -10,6 +10,7 @@ RUN apt-get update && \
 	ninja-build \
 	build-essential \
 	curl \
+	libopencv-dev \
 	git \
 	vim \
 	python3-pip \
