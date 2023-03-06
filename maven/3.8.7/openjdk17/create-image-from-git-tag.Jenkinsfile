@@ -68,7 +68,7 @@ pipeline {
         }
         stage('Build Image ') {
             steps{
-                sh 'bash ./maven/3.8.7/openjdk17/build-image.sh'
+                sh "docker build -f ./maven/3.8.7/openjdk17/Dockerfile -t ${imageName}:${params.TAG} ."
             }
         }
         stage('Push Image ') {

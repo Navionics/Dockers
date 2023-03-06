@@ -32,10 +32,10 @@ RUN set -x \
   # smoke test
   && mvn --version
 
-COPY mvn-entrypoint.sh /usr/local/bin/mvn-entrypoint.sh
+COPY ./maven/${MAVEN_VERSION}/openjdk17/mvn-entrypoint.sh /usr/local/bin/mvn-entrypoint.sh
 RUN chmod +x /usr/local/bin/mvn-entrypoint.sh
 
-COPY settings-docker.xml /usr/share/maven/ref/
+COPY ./maven/${MAVEN_VERSION}/openjdk17/settings-docker.xml /usr/share/maven/ref/
 
 ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
 CMD ["mvn"]
