@@ -46,7 +46,7 @@ pipeline {
     }
     environment {
         imageName = "navionics/maven"
-
+        imageVersion = "${params.TAG}"    
     }
     stages {
         stage('CleanUp') {
