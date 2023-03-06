@@ -33,6 +33,8 @@ RUN set -x \
   && mvn --version
 
 COPY mvn-entrypoint.sh /usr/local/bin/mvn-entrypoint.sh
+RUN chmod +x /usr/local/bin/mvn-entrypoint.sh
+
 COPY settings-docker.xml /usr/share/maven/ref/
 
 ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
