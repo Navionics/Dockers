@@ -63,7 +63,7 @@ pipeline {
                 compressLog: true,
                 recipientProviders: [culprits()],
                 subject: "[${currentBuild.projectName}] Failed Pipeline: ${currentBuild.fullDisplayName}",
-                body: "Something is wrong with ${env.BUILD_URL} on branch ${env.BRANCH_NAME}, please check the log"
+                body: "Something is wrong with ${env.BUILD_URL} on tag ${params.TAG}, please check the log"
             )
         }
         always {
