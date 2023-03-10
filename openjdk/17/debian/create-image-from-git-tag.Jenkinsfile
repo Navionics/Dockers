@@ -1,36 +1,6 @@
 final GIT_REPO = 'git@github.com:Navionics/Dockers.git'
 final MACHINE_LABEL = 'docker-masxpb'
 
-def getRepoURL() {
-    sh "git config --get remote.origin.url > .git/remote-url"
-    return readFile(".git/remote-url").trim()
-}
-
-def getCommitSha() {
-    sh "git rev-parse HEAD > .git/current-commit"
-    return readFile(".git/current-commit").trim()
-}
-
-def updateGithubCommitStatus(description) {
-    repoUrl = getRepoURL()
-    commitSha = getCommitSha()
-
-    step([
-            $class: 'GitHubCommitStatusSetter',
-            reposSource: [$class: "ManuallyEnteredRepositorySource", url: repoUrl],
-            commitShaSource: [$class: "ManuallyEnteredShaSource", sha: commitSha],
-            errorHandlers: [[$class: 'ShallowAnyErrorHandler']],
-            statusResultSource: [
-                    $class: 'ConditionalStatusResultSource',
-                    results: [
-                            [$class: 'BetterThanOrEqualBuildResult', result: 'SUCCESS', state: 'SUCCESS', message: description],
-                            [$class: 'BetterThanOrEqualBuildResult', result: 'UNSTABLE', state: 'FAILURE', message: description],
-                            [$class: 'BetterThanOrEqualBuildResult', result: 'FAILURE', state: 'FAILURE', message: description],
-                            [$class: 'AnyBuildResult', state: 'FAILURE', message: 'Loophole']
-                    ]
-            ]
-    ])
-}
 pipeline {
     agent { label MACHINE_LABEL}
     parameters {
@@ -97,8 +67,6 @@ pipeline {
             )
         }
         always {
-            updateGithubCommitStatus("Jenkins Job ${env.BUILD_NUMBER} - Result: ${currentBuild.currentResult} ")
-            sh "export BUILD_ID=$BUILD_ID"
             cleanWs deleteDirs: true, disableDeferredWipeout: true
         }
     }
