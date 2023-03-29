@@ -1,8 +1,0 @@
-FROM navionics/ruby:2.3.8v2
-
-RUN apt-get update \
-    && apt-get install -y libmysqlclient-dev unzip python python-pip rsync \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip install awscli
-
