@@ -28,4 +28,5 @@
 # When someone opens a pull request that only modify
 # a DevOps file, only DevOps and not the global owner(s) will
 # be requested for a review.
-# add a DevOps folder if necessary 
+
+/aws-cli/ @Navionics/navionics-devops
