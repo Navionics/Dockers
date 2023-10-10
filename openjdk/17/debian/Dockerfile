@@ -12,6 +12,7 @@ ARG version=17.0.6.10-1
 
 RUN set -eux \
     && apt-get update \
+    && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
         curl ca-certificates gnupg software-properties-common fontconfig java-common \
     && curl -fL https://apt.corretto.aws/corretto.key | apt-key add - \

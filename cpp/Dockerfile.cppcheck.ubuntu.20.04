@@ -4,6 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TERM linux
 
 RUN apt-get update && \
+  apt-get upgrade -y && \
   apt-get install -y cppcheck
 
 WORKDIR /sdk

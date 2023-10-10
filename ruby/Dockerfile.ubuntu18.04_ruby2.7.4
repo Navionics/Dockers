@@ -8,6 +8,7 @@ RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 
 ## Install core tools and dependencies
 RUN apt-get -y update \
+    && apt-get upgrade -y \
     && apt-get install -y software-properties-common build-essential \
     autoconf git-core git openssl libreadline7 libreadline-dev curl \
     zlib1g zlib1g-dev libssl1.0-dev libyaml-dev libsqlite3-dev sqlite3 \
