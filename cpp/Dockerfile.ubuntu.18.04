@@ -6,7 +6,6 @@ ENV TERM linux
 ARG CMAKE_VERSION=3.24.1
 
 RUN apt-get update && \
-  apt-get upgrade -y && \
   apt-get install -y \
     ninja-build \
     build-essential \
