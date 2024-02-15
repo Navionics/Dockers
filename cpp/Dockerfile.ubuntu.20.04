@@ -14,6 +14,7 @@ RUN apt-get update && \
 	git \
 	vim \
 	python3-pip \
+	python2 \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN curl -o /tmp/cmake-install.sh -L https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
